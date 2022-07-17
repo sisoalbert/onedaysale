@@ -1,13 +1,29 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 
-const Banner = () => {
+const Banner = props => {
   return (
-    <View style={styles.container}>
-      <View style={styles.banner}>
-        <Text>Banner</Text>
-        <Text>Banner</Text>
-      </View>
+    <View
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        paddingBottom: 10,
+        paddingTop: 20,
+      }}>
+      <Image
+        source={{
+          uri: props.url,
+        }}
+        style={{
+          height: 120,
+          width: '100%',
+          // backgroundColor: 'coral',
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: 10,
+        }}
+      />
     </View>
   );
 };
@@ -25,7 +41,7 @@ const styles = StyleSheet.create({
   banner: {
     height: 120,
     width: '100%',
-    backgroundColor: 'coral',
+    // backgroundColor: 'coral',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,

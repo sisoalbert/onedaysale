@@ -34,7 +34,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   linearGradient: {
-    height: 60,
+    height: 80,
     // borderColor: 'red',
     // borderWidth: 1,
   },

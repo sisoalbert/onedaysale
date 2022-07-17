@@ -1,11 +1,19 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 
-const CardLarge = () => {
+const CardLarge = props => {
   return (
     <View style={styles.container}>
       <View>
         <View style={styles.imageContainer}>
+          <Image
+            source={{
+              uri: props.url,
+            }}
+            style={styles.imageContainer}
+            resizeMode="contain"
+          />
+
           <View
             style={{
               position: 'absolute',
@@ -50,7 +58,7 @@ const CardLarge = () => {
                 paddingHorizontal: 10,
                 borderRadiusColor: 'black',
               }}>
-              500-items
+              {props.count}-items
             </Text>
           </View>
         </View>
@@ -62,16 +70,17 @@ const CardLarge = () => {
               color: 'black',
               paddingVertical: 5,
             }}>
-            Arragon Leather
+            {props.title}
           </Text>
           <Text
+            numberOfLines={1}
             style={{
               fontSize: 18,
               fontWeight: '600',
               color: 'grey',
               paddingVertical: 5,
             }}>
-            Leather Handmade with many cows
+            {props.description}
           </Text>
         </View>
         <View
@@ -94,7 +103,7 @@ const CardLarge = () => {
                 paddingVertical: 5,
                 paddingRight: 5,
               }}>
-              R349
+              R{props.price * 15}
             </Text>
             <Text
               style={{
@@ -104,7 +113,7 @@ const CardLarge = () => {
                 paddingVertical: 5,
                 textDecorationLine: 'line-through',
               }}>
-              R700
+              R{(props.price * 15 + 45).toFixed(2)}
             </Text>
           </View>
           <View
@@ -113,7 +122,7 @@ const CardLarge = () => {
               width: 40,
               borderRadius: 25,
 
-              backgroundColor: 'coral',
+              backgroundColor: 'white',
             }}></View>
         </View>
       </View>
@@ -135,6 +144,6 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 10,
 
-    backgroundColor: 'coral',
+    backgroundColor: 'white',
   },
 });

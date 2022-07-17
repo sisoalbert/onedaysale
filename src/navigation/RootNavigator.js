@@ -5,6 +5,8 @@ import Details from '../screens/Details';
 import Cart from '../screens/Cart';
 import Header from '../component/Header';
 import RNview from '../component/RNview';
+import StoreContainer from '../component/StoreContainer';
+import TodaysDeals from '../component/TodaysDeals';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,14 +18,8 @@ import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 function MyStack() {
-  // const headerHeight = useHeaderHeight();
-
-  // console.log(headerHeight);
-
   return (
     <>
-      {/* <SafeAreaView></SafeAreaView> */}
-
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
@@ -54,7 +50,6 @@ function MyTabBar({state, descriptors, navigation}) {
       {newRoutes.map((route, index) => {
         const icon = route.icon;
         // console.log(route.name);
-
         // console.log(descriptors[route.key]);
         const {options} = descriptors[route.key];
         const label =
@@ -87,7 +82,7 @@ function MyTabBar({state, descriptors, navigation}) {
         };
         return (
           <TouchableOpacity
-            accessibilityRole="button"
+            key={index}
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
@@ -116,7 +111,6 @@ function MyTabs() {
   return (
     <>
       <Header />
-
       <Tab.Navigator
         tabBar={props => <MyTabBar {...props} />}
         screenOptions={{
@@ -131,17 +125,17 @@ function MyTabs() {
 
 function HomeScreen() {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home!</Text>
-    </View>
+    <>
+      <StoreContainer />
+    </>
   );
 }
 
-function SettingsScreen() {
+function TodaysDealsScreen() {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
+    <>
+      <TodaysDeals />
+    </>
   );
 }
 
@@ -154,8 +148,9 @@ function MyTopTab() {
       <TopTab.Navigator
       // tabBarPosition="bottom"
       >
-        <TopTab.Screen name="screenx" component={Home} />
-        <TopTab.Screen name="Settings" component={HomeScreen} />
+        <TopTab.Screen name="CLEARENCE" component={Home} />
+        <TopTab.Screen name="TODAY'S DEAL" component={TodaysDealsScreen} />
+        <TopTab.Screen name="ESSENTIALS" component={HomeScreen} />
       </TopTab.Navigator>
     </>
   );
