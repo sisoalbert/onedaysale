@@ -86,6 +86,7 @@
 		13B07FAE1A68108700A75B9A /* onedaysale */ = {
 			isa = PBXGroup;
 			children = (
+				7254E33A2885FD9C0087ABE4 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -104,6 +105,13 @@
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-onedaysale-onedaysaleTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7254E33A2885FD9C0087ABE4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -207,7 +215,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1330;
 					};
 				};
 			};

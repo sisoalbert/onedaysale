@@ -7,6 +7,7 @@ import Header from '../component/Header';
 import RNview from '../component/RNview';
 import StoreContainer from '../component/StoreContainer';
 import TodaysDeals from '../component/TodaysDeals';
+import Clearance from '../component/Clearance';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
@@ -131,6 +132,14 @@ function HomeScreen() {
   );
 }
 
+function ClearanceScreen() {
+  return (
+    <>
+      <Clearance />
+    </>
+  );
+}
+
 function TodaysDealsScreen() {
   return (
     <>
@@ -148,7 +157,7 @@ function MyTopTab() {
       <TopTab.Navigator
       // tabBarPosition="bottom"
       >
-        <TopTab.Screen name="CLEARENCE" component={Home} />
+        <TopTab.Screen name="CLEARENCE" component={ClearanceScreen} />
         <TopTab.Screen name="TODAY'S DEAL" component={TodaysDealsScreen} />
         <TopTab.Screen name="ESSENTIALS" component={HomeScreen} />
       </TopTab.Navigator>

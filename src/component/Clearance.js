@@ -7,23 +7,18 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+// import {addToCart} from '../redux/features/cart/cartSlice';
+// import {useDispatch, useSelector} from 'react-redux';
 
-//navigation
-import {useNavigation} from '@react-navigation/native';
-
-//redux
-import {addToCart} from '../redux/features/cart/cartSlice';
-import {useDispatch, useSelector} from 'react-redux';
+// import Data from '../../assets/cartItems';
 
 import Banner from '../component/Banner';
 import CardLarge from '../component/CardLarge';
 
 const url = 'https://course-api.com/react-useReducer-cart-project';
 
-const TodaysDeals = props => {
-  const navigation = useNavigation();
-
-  const dispatch = useDispatch();
+const Clearance = props => {
+  //   const dispatch = useDispatch();
   const [Data, setData] = useState();
 
   useEffect(() => {
@@ -37,7 +32,31 @@ const TodaysDeals = props => {
 
   const StoreItems = () => {
     const renderStoreItems = ({item}) => {
-      // console.log(item);
+      const OldLayout = item => {
+        return (
+          <>
+            <View style={styles.storeItem}>
+              <View style={styles.storeItemImg}>
+                <Image
+                  style={styles.storeItemImage}
+                  source={{uri: item.image}}
+                />
+              </View>
+              <View style={styles.storeItemInfo}>
+                <Text style={styles.storeItemTitle}>{item.title}</Text>
+                <Text style={styles.storeItemPrice}>R{item.price * 12} </Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    // dispatch(addToCart(item));
+                  }}
+                  style={styles.addToCart}>
+                  <Text style={styles.addToCartText}>Add to Cart</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </>
+        );
+      };
 
       return (
         <>
@@ -47,22 +66,6 @@ const TodaysDeals = props => {
             description={item.description}
             price={item.price}
             count={item.rating.count}
-            addToCart={() => {
-              dispatch(addToCart(item));
-            }}
-            // onPress={() => navigation.navigate('Details')}
-
-            goToDetails={() =>
-              navigation.navigate('Details', {
-                itemId: item.id,
-                itemTitle: item.title,
-                itemPrice: item.price,
-                itemImage: item.image,
-                itemDescription: item.description,
-                // carouselDataIndex: item.index,
-                data: item,
-              })
-            }
           />
         </>
       );
@@ -99,7 +102,7 @@ const TodaysDeals = props => {
   );
 };
 
-export default TodaysDeals;
+export default Clearance;
 
 const styles = StyleSheet.create({
   storeItem: {

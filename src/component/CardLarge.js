@@ -1,88 +1,95 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 const CardLarge = props => {
   return (
     <View style={styles.container}>
       <View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{
-              uri: props.url,
-            }}
-            style={styles.imageContainer}
-            resizeMode="contain"
-          />
+        <TouchableOpacity onPress={props.goToDetails}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={{
+                uri: props.url,
+              }}
+              style={styles.imageContainer}
+              resizeMode="contain"
+            />
 
-          <View
-            style={{
-              position: 'absolute',
-              right: 0,
-              top: 30,
-              height: 40,
-              width: 80,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderBottomStartRadius: 5,
-              borderTopStartRadius: 5,
-              backgroundColor: 'white',
-            }}>
-            <Text
+            <View
               style={{
-                fontSize: 16,
+                position: 'absolute',
+                right: 0,
+                top: 30,
+                height: 40,
+                width: 80,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottomStartRadius: 5,
+                borderTopStartRadius: 5,
+                backgroundColor: '#E70D63',
+              }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  color: 'white',
+                  paddingVertical: 5,
+                }}>
+                {(
+                  (1 - (props.price * 15) / (props.price * 15 + 45)) *
+                  100
+                ).toFixed(2)}
+                %
+              </Text>
+            </View>
+            <View
+              style={{
+                position: 'absolute',
+                right: 20,
+                bottom: 30,
+                height: 40,
+                //   width: 80,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 20,
+                backgroundColor: 'white',
+              }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  color: 'black',
+                  paddingVertical: 5,
+                  paddingHorizontal: 10,
+                  borderRadiusColor: 'black',
+                }}>
+                {props.count}-items
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Text
+              numberOfLines={2}
+              style={{
+                fontSize: 20,
                 fontWeight: 'bold',
                 color: 'black',
                 paddingVertical: 5,
               }}>
-              -1150%
+              {props.title}
             </Text>
-          </View>
-          <View
-            style={{
-              position: 'absolute',
-              right: 20,
-              bottom: 30,
-              height: 40,
-              //   width: 80,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 20,
-              backgroundColor: 'white',
-            }}>
             <Text
+              numberOfLines={1}
               style={{
-                fontSize: 16,
-                fontWeight: 'bold',
-                color: 'black',
+                fontSize: 18,
+                fontWeight: '600',
+                color: 'grey',
                 paddingVertical: 5,
-                paddingHorizontal: 10,
-                borderRadiusColor: 'black',
               }}>
-              {props.count}-items
+              {props.description}
             </Text>
           </View>
-        </View>
-        <View>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              color: 'black',
-              paddingVertical: 5,
-            }}>
-            {props.title}
-          </Text>
-          <Text
-            numberOfLines={1}
-            style={{
-              fontSize: 18,
-              fontWeight: '600',
-              color: 'grey',
-              paddingVertical: 5,
-            }}>
-            {props.description}
-          </Text>
-        </View>
+        </TouchableOpacity>
         <View
           style={{
             flexDirection: 'row',
@@ -116,14 +123,19 @@ const CardLarge = props => {
               R{(props.price * 15 + 45).toFixed(2)}
             </Text>
           </View>
-          <View
+          <TouchableOpacity
+            onPress={props.addToCart}
             style={{
               height: 40,
               width: 40,
               borderRadius: 25,
+              justifyContent: 'center',
+              alignItems: 'center',
 
               backgroundColor: 'white',
-            }}></View>
+            }}>
+            <Text style={{fontSize: 24}}>+</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
